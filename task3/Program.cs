@@ -7,18 +7,17 @@
 8 4 2 4
 Среднее арифметическое каждого столбца: 4,6; 5,6; 3,6; 3.
 */
-void fillArray(int [,] array)
+void FillArray(double [,] array)
 {
     for (int i = 0; i < array.GetLength(0); i++)
         {
             for (int j = 0; j < array.GetLength(1); j++)
             {
-                array[i, j] = new Random().Next(1, 10);
+                array[i, j] = Math.Round(new Random().NextDouble()*10,3);
             }
         }
 }
-void printArrayRazm(int[,] array)
-
+void PrintArrayRazm(double[,] array)
 {
     for (int i=0; i<array.GetLength(0);i++)
     {
@@ -30,7 +29,8 @@ void printArrayRazm(int[,] array)
         Console.WriteLine();
     }
 }
-void PrintArray(int[] array)
+
+void PrintArray(double[] array)
     {
         int counts = array.Length;
         int position = 0;
@@ -44,16 +44,16 @@ Console.WriteLine("Введите количество строк массива
 int m=Convert.ToInt32(Console.ReadLine());
 Console.WriteLine("Введите количество столбцов массива");
 int n=Convert.ToInt32(Console.ReadLine());
-int [,] array1 = new int [m,n];
-fillArray(array1);
-printArrayRazm(array1);
+double [,] array1 = new double [m,n];
+FillArray(array1);
+PrintArrayRazm(array1);
 Console.WriteLine("");
 
 
-int [] SredneArifmetichColumn (int[,] arr1)
+double [] SredneArifmetichColumn (double[,] arr1)
 {
-    int [] arrSredneArifmetichColumn = new int[arr1.GetLength(1)];
-    int SumColumn=0;
+    double [] arrSredneArifmetichColumn = new double[arr1.GetLength(1)];
+    double SumColumn=0;
     for (int j=0; j<arr1.GetLength(1);j++)
     {
          for (int i=0; i<arr1.GetLength(0);i++)
@@ -61,7 +61,7 @@ int [] SredneArifmetichColumn (int[,] arr1)
             SumColumn=SumColumn+arr1[i,j];
            
         }
-        arrSredneArifmetichColumn[j]=SumColumn/arr1.GetLength(1);
+        arrSredneArifmetichColumn[j]=Math.Round(SumColumn/arr1.GetLength(1),2);
         SumColumn=0;
     }
     return arrSredneArifmetichColumn;
